@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8" />
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <!-- font -->
+
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Weather Dash Site</title>
+</head>
+
+
+<body>
+    <header>
+        <h1>Weather Dashboard</h1>
+    </header>
+</body>
+<main>
+    <div class="main-container">
+        <div class="row">
+            <div class="searcharea">
+                <h2 class="sideSearch">Search for a City:</h2>
+                <div class="input-group">
+                    <input type="text" class="input" id="input-city" placeholder="Enter Name of City">
+                    <div class="input-group-append">
+                        <button class="btn" type="text" id="searchbtn"> Weather Data
+                        </button>
+                    </div>
+                    <!-- past city searches -->
+                    <div class="box table-box">
+                        <div class="table-container">
+                            <table id="cityList" class="table">
+                                <tr></tr>
+                                <!-- table  -->
+                            </table>
+                        </div>
+                    </div>
+                    <div  id="prior-search">
+                        <!-- prior searches -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="second-container" id="forecast">
+                <!-- weather -->
+                <div class="coulmn city-data">
+                    <h2 id="city-name"></h2>
+                    <h4 id="city-cond"></h4>
+                    <h4 id="temp"></h4>
+                    <h4 id="humidity"></h4>
+                    <h4 id="wind-speed"></h4>
+                </div>
+                     <div class="column">
+                        <div id="icon"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- day of weather info -->
+            <div class="container2">
+                <div class="coulmn city-data">
+                    <h2 id="city-name"></h2>
+                    <h4 id="city-cond"></h4>
+                    <h4 id="temp"></h4>
+                    <h4 id="humidity"></h4>
+                    <h4 id="wind-speed"></h4>
+                </div>
+                <div class="content">
+                    <h2> 5 Day Forecast: </h2>
+                    <div class="columns">
+                        <div class="column card">
+                            <div id="day1" class="card-content">
+                                <h3 id="date1" class="text"></h3>
+                                <div id="day1-icon">
+                                    <img id="weathericon" src="" alt="Weather Icon">
+                                </div>
+                                <h4 id="day1-temp" class="text"></h4>
+                                <h4 id="day1-humidity" class="text"></h4>
+                                <h4 id="wind-speed1" class="text"></h4>
+                            </div>
+                        </div>
+                        <div class="column card">
+                            <div id="day2" class="card-content">
+                                <h3 id="date2" class="text"></h3>
+                                <div id="day2-icon">
+                                    <img id="weathericon" src="" alt="Weather Icon">
+                                </div>
+                                <h4 id="day2-temp" class="text"></h4>
+                                <h4 id="day2-humidity" class="text"></h4>
+                                <h4 id="wind-speed2" class="text"></h4>
+                            </div>
+                        </div>
+                        <div class="column card">
+                            <div id="day3" class="card-content">
+                                <h3 id="date3" class="text"></h3>
+                                <div id="day3-icon">
+                                    <img id="weathericon" src="" alt="Weather Icon">
+                                </div>
+                                <h4 id="day3-temp" class="text"></h4>
+                                <h4 id="day3-humidity" class="text"></h4>
+                                <h4 id="wind-speed3" class="text"></h4>
+                            </div>
+                        </div>
+                        <div class="column card">
+                            <div id="day4" class="card-content">
+                                <h3 id="date4" class="text"></h3>
+                                <div id="day4-icon">
+                                    <img id="weathericon" src="" alt="Weather Icon">
+                                </div>
+                                <h4 id="day4-temp" class="text"></h4>
+                                <h4 id="day4-humidity" class="text"></h4>
+                                <h4 id="wind-speed4" class="text"></h4>
+                            </div>
+                        </div>
+                        <div class="column card">
+                            <div id="day5" class="card-content">
+                                <h3 id="date5" class="text"></h3>
+                                <div id="day5-icon">
+                                    <img id="weathericon" src="" alt="Weather Icon">
+                                </div>
+                                <h4 id="day5-temp" class="text"></h4>
+                                <h4 id="day5-humidity" class="text"></h4>
+                                <h4 id="wind-speed5" class="text"></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- momment -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<!-- script  -->
+<script src="assets/js/script.js"></script>
+
+
+</html>
