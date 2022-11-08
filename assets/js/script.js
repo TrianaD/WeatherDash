@@ -1,73 +1,20 @@
 
 $(document).ready(function () {
 
-
-
-    // when submit run function to obtain data and apply 
-    $("#searchbtn").on("click", (event) => {
-        event.preventDefault();
-        obtainCity();
-        search();
-        $("#input-city").val("");
-        listCities();
-    });
-
     // variables for city
 
     var city = document.querySelector('#input-city').value;
     var cities;
 
+    // when submit run function to obtain data and run functions 
+    $("#searchbtn").on("click", (event) => {
+        event.preventDefault();
+        obtainCity();
+        search();
+        $("#input-city").val("");
+        listcities();
+    });
 
-    // recent search loaded from local storage
-
-    function recentSearch() {
-        var lastSearch = localStorage.getItem("recent");
-        if (lastSearch) {
-            city = lastSearch;
-            search();
-
-        } else {
-            // placeholder if nothing is searched
-            city = "Phoenix";
-            search();
-        }
-    }
-
-    recentSearch(city)
-
-
-    // data in local storage loaded
-    function recentCities() {
-        var recentCities = JSON.parse(localStorage.getItem("cities"));
-
-        if (recentCities) {
-            cities = recentCities;
-
-        } else {
-            cities = [];
-        }
-    }
-
-    recentCities()
-
-    function saveLocally() {
-        localStorage.setItem("recent", city);
-        cities.push(city);
-        localStorage.setItem("cities", JSON.stringify(cities));
-    }
-
-    function obtainCity() {
-        city = $("#input-city").val();
-        if (city && cities.includes(city) === false) {
-            saveLocally();
-            console.log(city);
-            return city;
-
-
-        } else if (!city) {
-            alert("Please try again, city not recognized")
-        }
-    }
 
     // get date
 
@@ -82,6 +29,19 @@ $(document).ready(function () {
     var day5 = moment().add(5, "days").format("l");
 
 
+
+    function obtainCity() {
+        city = $("#input-city").val();
+        if (city && cities.includes(city) === false) {
+            saveLocally();
+            console.log(city);
+            return city;
+
+
+        } else if (!city) {
+            alert("Please try again, city not recognized")
+        }
+    }
 
 
     function search() {
@@ -119,9 +79,9 @@ $(document).ready(function () {
             $("#date3").text(day3);
             $("#date4").text(day4);
             $("#date5").text(day5);
-    
 
-          getCoord(response.coord.lat, response.coord.lon);
+
+            getCoord(response.coord.lat, response.coord.lon);
         });
 
         //5-day forecast data in content containers
@@ -154,8 +114,8 @@ $(document).ready(function () {
                 var day3hum = response.daily[3].humidity;
                 var day4hum = response.daily[4].humidity;
                 var day5hum = response.daily[5].humidity;
-                $("#day1-humidity").text("Humidity:" + " " + day1hum + "%");
-                $("#day2-humidity").text("Humidity:" + " " + day2hum + "%");
+                $("#day1-humidity").text("Humidity:" + "" + day1hum + "%");
+                $("#day2-humidity").text("Humidity:" + "" + day2hum + "%");
                 $("#day3-humidity").text("Humidity:" + " " + day3hum + "%");
                 $("#day4-humidity").text("Humidity:" + " " + day4hum + "%");
                 $("#day5-humidity").text("Humidity:" + " " + day5hum + "%");
@@ -178,16 +138,57 @@ $(document).ready(function () {
         }
     }
 
-
     //function for recently searched cities 
-    function listCities() {
+    function listcities() {
         $("#cityList").text("");
         cities.forEach((city) => {
             $("#cityList").prepend("<tr><td>" + city + "</td></tr>");
         });
     }
 
-    listCities();
+    // recent search loaded from local storage
+
+    function recentSearch() {
+        var lastSearch = localStorage.getItem("recent");
+        if (lastSearch) {
+            city = lastSearch;
+            search();
+
+        } else {
+            // placeholder for no search request
+            city = "Phoenix";
+            search();
+        }
+    }
+
+    recentSearch(city)
+
+
+    // data in local storage check
+    function recentcities() {
+        var recentcities = JSON.parse(localStorage.getItem("cities"));
+
+        if (recentcities) {
+            cities = recentcities;
+
+        } else {
+            cities = [];
+        }
+    }
+
+    recentcities()
+
+    function saveLocally() {
+        localStorage.setItem("recent", city);
+        cities.push(city);
+        localStorage.setItem("cities", JSON.stringify(cities));
+    }
+
+
+
+
+
+    listcities();
 
     //table cities
     $(document).on("click", "td", (event) => {
